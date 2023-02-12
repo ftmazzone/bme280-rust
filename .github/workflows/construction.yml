@@ -23,7 +23,7 @@ jobs:
         id: compilateur-croise
         uses: actions/cache@v3
         with:
-          path: ./$COMPILATEUR_CROISE
+          path: ./ ${{ env.COMPILATEUR_CROISE }}
           key: ${{ runner.os }}-${{ hashFiles(env.COMPILATEUR_CROISE) }}-${{ env.COMPILATEUR_CROISE }}
       - name: Télécharger le compilateur croisé pour Raspberry Pi Zero
         if: steps.compilateur-croise.outputs.cache-hit != 'true'
