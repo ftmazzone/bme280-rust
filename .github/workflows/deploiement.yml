@@ -45,10 +45,10 @@ jobs:
         run:  |
           rustup --version
           cargo --version
-          cargo build --release --target arm-unknown-linux-gnueabihf -p lire_temperature
+          cargo build --release --target arm-unknown-linux-gnueabihf --example lire_temperature
       - uses: actions/upload-artifact@v3
         with:
           name: lire_temperature_armv6
-          path: ./target/arm-unknown-linux-gnueabihf/release/lire_temperature
+          path: ./target/arm-unknown-linux-gnueabihf/release/examples/lire_temperature
           retention-days: 31
           if-no-files-found: error
