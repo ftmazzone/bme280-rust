@@ -1,6 +1,6 @@
 # bme280-rust
 
-![Création de l'exemple lire_temperature](https://github.com/ftmazzone/bme280-rust/actions/workflows/construction/badge.svg)
+![Création de l'exemple lire_temperature](https://github.com/ftmazzone/bme280-rust/actions/workflows/construction.yml/badge.svg?branch=master)
 
 Mesure de l'humidité, de la température et la pression atmosphérique avec le capteur bme280.
 
