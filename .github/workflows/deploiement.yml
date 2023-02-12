@@ -19,13 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Rechercher si le compilateur croisé pour RaspberryPi Zero est en mémoire temporaire
-        id: registry-cargo
+        id: compilateur-croise
         uses: actions/cache@v3
         with:
           path: ./${{COMPILATEUR_CROISE}}
           key: ${{ runner.os }}-${{ hashFiles($COMPILATEUR_CROISE) }}-${{COMPILATEUR_CROISE}}
       - name: Télécharger le compilateur croisé pour RaspberryPi Zero
-        if: steps.cache-primes.outputs.cache-hit != 'true'
+        if: steps.compilateur-croise.outputs.cache-hit != 'true'
         run: wget https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Bullseye/GCC%2010.3.0/Raspberry%20Pi%201%2C%20Zero/cross-gcc-10.3.0-pi_0-1.tar.gz/download -O cross-gcc-10.3.0-pi_0-1.tar.gz  
       - name: Préparer le compilateur pour la compilation croisée ARMv6
         run: |
