@@ -11,7 +11,7 @@ include = [
 ]
 
 [dependencies]
-rppal = { version = "0.12"}
+rppal = { version = "0"}
 log = "0"
 rust_decimal = "1"
 serde = { version = "1", features = ["derive"] }
