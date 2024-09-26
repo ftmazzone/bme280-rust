@@ -40,7 +40,7 @@ jobs:
           cargo build --release --example lire_temperature
       - uses: actions/upload-artifact@v4
         with:
-          name: lire_temperature_armv6
+          name: lire_temperature
           path: ./target/release/examples/lire_temperature
           retention-days: 31
           if-no-files-found: error
