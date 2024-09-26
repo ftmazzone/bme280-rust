@@ -16,10 +16,10 @@ jobs:
     timeout-minutes: 10
     # if: github.ref == 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Rechercher si le répertoire des dépendances est en mémoire temporaire
         id: registry-cargo
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ env.CARGO_HOME }}
           key: ${{ runner.os }}-${{ hashFiles('Cargo.lock') }}-registry-Cargo.lock
@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-registry-Cargo.lock
       - name: Rechercher si le répertoire de construction est en mémoire temporaire
         id: target-cargo
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./target
           key: ${{ runner.os }}-${{ hashFiles('Cargo.lock') }}-target-Cargo.lock
@@ -38,7 +38,7 @@ jobs:
           rustup --version
           cargo --version
           cargo build --release --example lire_temperature
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: lire_temperature_armv6
           path: ./target/release/examples/lire_temperature
@@ -52,10 +52,10 @@ jobs:
       COMPILATEUR_CROISE: cross-gcc-12.2.0-pi_0-1.tar.gz
       ADRESSE_COMPILATEUR_CROISE: https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Bookworm/GCC%2012.2.0/Raspberry%20Pi%201%2C%20Zero/cross-gcc-12.2.0-pi_0-1.tar.gz/download -O cross-gcc-12.2.0-pi_0-1.tar.gz
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Rechercher si le compilateur croisé pour Raspberry Pi Zero est en mémoire temporaire
         id: compilateur-croise
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./${{ env.COMPILATEUR_CROISE }}
           key: ${{ runner.os }}-${{ hashFiles(env.COMPILATEUR_CROISE) }}-${{ env.COMPILATEUR_CROISE }}
@@ -71,7 +71,7 @@ jobs:
           mv .cargo/config-compilation-croisee .cargo/config
       - name: Rechercher si le répertoire des dépendances est en mémoire temporaire
         id: registry-cargo
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ env.CARGO_HOME }}
           key: ${{ runner.os }}-${{ hashFiles('Cargo.lock') }}-registry-Cargo.lock
@@ -79,7 +79,7 @@ jobs:
             ${{ runner.os }}-registry-Cargo.lock
       - name: Rechercher si le répertoire de construction est en mémoire temporaire
         id: target-cargo
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./target
           key: ${{ runner.os }}-${{ hashFiles('Cargo.lock') }}-target-Cargo.lock
@@ -90,7 +90,7 @@ jobs:
           rustup --version
           cargo --version
           cargo build --release --target arm-unknown-linux-gnueabihf --example lire_temperature
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: lire_temperature_armv6
           path: ./target/arm-unknown-linux-gnueabihf/release/examples/lire_temperature
