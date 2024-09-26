@@ -4,11 +4,11 @@ use std::{
         atomic::{AtomicBool, Ordering},
         Arc,
     },
+    thread,
     time::Duration,
 };
 
 use bme_280::capteur::Capteur;
-use std::thread;
 
 fn main() {
     if env::var("RUST_LOG").is_err() {
@@ -25,7 +25,6 @@ fn main() {
         arret_demande_clone.store(true, Ordering::SeqCst);
     })
     .unwrap();
-
 
     let mut capteur = Capteur::new().unwrap();
     capteur.demarrer().unwrap();
