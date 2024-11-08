@@ -58,7 +58,7 @@ jobs:
           cargo --version
           cargo build --release --example lire_temperature
       - name: Auditer les dépendances
-        script: |
+        run: |
           cargo install cargo-audit --locked
           cargo audit
       - name: Attester l'origine des exécutables
