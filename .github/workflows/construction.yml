@@ -94,7 +94,6 @@ jobs:
       - name: Préparer le compilateur pour la compilation croisée ARMv6
         run: |
           sudo apt-get install gcc-arm-linux-gnueabihf wget libssl-dev pkg-config make perl
-          rustup target add arm-unknown-linux-gnueabihf
           git clone https://github.com/abhiTronix/raspberry-pi-cross-compilers.git
           tar -xf $COMPILATEUR_CROISE
           mv .cargo/config-compilation-croisee .cargo/config
