@@ -58,8 +58,8 @@ jobs:
           cargo --version
           cargo build --release --example lire_temperature
       - script: |
-        cargo install cargo-audit --locked
-        cargo audit
+          cargo install cargo-audit --locked
+          cargo audit
         displayName: Auditer les dépendances
       - name: Attester l'origine des exécutables
         if: ${{ github.ref == 'refs/heads/master' }} 
