@@ -57,10 +57,10 @@ jobs:
           rustup --version
           cargo --version
           cargo build --release --example lire_temperature
-      - script: |
+      - name: Auditer les dépendances
+        script: |
           cargo install cargo-audit --locked
           cargo audit
-        displayName: Auditer les dépendances
       - name: Attester l'origine des exécutables
         if: ${{ github.ref == 'refs/heads/master' }} 
         uses: actions/attest-build-provenance@v1
@@ -132,10 +132,10 @@ jobs:
           rustup --version
           cargo --version
           cargo build --release --target arm-unknown-linux-gnueabihf --example lire_temperature
-      - script: |
+      - name: Auditer les dépendances
+        run: |
           cargo install cargo-audit --locked
           cargo audit
-        displayName: Auditer les dépendances
       - name: Attester l'origine des exécutables
         if: ${{ github.ref == 'refs/heads/master' }} 
         uses: actions/attest-build-provenance@v1
