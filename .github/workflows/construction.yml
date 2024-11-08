@@ -135,7 +135,7 @@ jobs:
       - script: |
           cargo install cargo-audit --locked
           cargo audit
-          displayName: Auditer les dépendances
+        displayName: Auditer les dépendances
       - name: Attester l'origine des exécutables
         if: ${{ github.ref == 'refs/heads/master' }} 
         uses: actions/attest-build-provenance@v1
